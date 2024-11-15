@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Dados</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main-container">
+        
+        <!-- Nueva columna para funciones personalizadas -->
+        <div class="custom-functions-container">
+            <h2>Funciones Personalizadas</h2>
+            <div id="custom-function-form">
+                <input type="text" id="custom-function-name" placeholder="Nombre (e.g., Ataque con espada)">
+                <input type="text" id="custom-function-expression" placeholder="Expresión (e.g., 1d20+3)">
+                <button onclick="addCustomFunction()">Crear Botón</button>
+            </div>
+            <div id="custom-buttons-container">
+                <!-- Aquí aparecerán los botones personalizados -->
+            </div>
+        </div>
+        
+        <!-- Modal de edición de función personalizada -->
+        <div id="edit-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <h3>Editar Función Personalizada</h3>
+                <input type="text" id="edit-function-name" placeholder="Nuevo Nombre">
+                <input type="text" id="edit-function-expression" placeholder="Nueva Expresión">
+                <button onclick="saveEdit()">Guardar Cambios</button>
+                <button onclick="closeEditModal()">Cancelar</button>
+            </div>
+        </div>
+        
+        
+        <!-- Contenedor Principal de la Aplicación -->
+        <div class="container">
+            <h1>Simulador de Dados</h1>
+            
+            <!-- Campo de entrada para la expresión personalizada -->
+            <div id="custom-roll">
+                <input type="text" id="dice-expression" placeholder="Ejemplo: 1d20+3">
+                <button onclick="rollCustomDice()">Lanzar</button>
+            </div>
+
+            <!-- Selector de tipo de tirada -->
+            <div id="advantage-toggle">
+                <label><input type="radio" name="roll-type" value="normal" checked> Normal</label>
+                <label><input type="radio" name="roll-type" value="advantage"> Ventaja</label>
+                <label><input type="radio" name="roll-type" value="disadvantage"> Desventaja</label>
+            </div>
+            
+            <!-- Contenedor de los dados -->
+            <div id="dice-container">
+                <div class="dice" id="dice-result">🎲</div>
+            </div>
+
+            <!-- Botones para lanzar dados de diferentes caras -->
+            <div id="buttons-container">
+                <button onclick="rollDiceWithSides(4)">Lanzar D4</button>
+                <button onclick="rollDiceWithSides(6)">Lanzar D6</button>
+                <button onclick="rollDiceWithSides(8)">Lanzar D8</button>
+                <button onclick="rollDiceWithSides(10)">Lanzar D10</button>
+                <button onclick="rollDiceWithSides(12)">Lanzar D12</button>
+                <button onclick="rollDiceWithSides(20)">Lanzar D20</button>
+                <button onclick="rollDiceWithSides(100)">Lanzar D100</button>
+            </div>
+
+            <!-- Mostrar resultado -->
+            <p id="result"></p>
+        </div>
+
+        <!-- Contenedor de Historial -->
+        <div class="history-container">
+            <h2>Historial de Lanzamientos</h2>
+            <ul id="history-list"></ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
